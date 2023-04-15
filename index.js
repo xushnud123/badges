@@ -34,4 +34,8 @@ if (comfiBanner) {
   );
 }
 
-console.log(getAllAttributes(comfiBanner));
+function Comfi(item) {
+  return item === "comfi";
+}
+
+module.exports = Comfi;

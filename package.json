@@ -1,0 +1,22 @@
+{
+  "name": "badges",
+  "version": "1.0.0",
+  "description": "comfi uchun badges",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/xushnud123/badges.git"
+  },
+  "keywords": [
+    "comfi"
+  ],
+  "author": "Raimov Xushnudbek",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/xushnud123/badges/issues"
+  },
+  "homepage": "https://github.com/xushnud123/badges#readme"
+}
