@@ -1,0 +1,36 @@
+.comfi-badges {
+  display: flex;
+  align-items: center;
+  padding: 5px 10px;
+  gap: 6px;
+  width: max-content;
+  border-radius: 100px;
+  font-family: "Work Sans";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 20px;
+  text-align: center;
+  color: #000000;
+}
+
+.comfi-badges span {
+  width: 20px;
+  height: 20px;
+}
+.style_1 {
+  background-color: rgba(81, 252, 143, 1);
+}
+
+.style_2 {
+  background-color: #000000;
+  color: #ffffff;
+}
+
+.style_2 span svg {
+  color: #fff;
+}
+
+.style_3 {
+  background: #ffffff;
+}
