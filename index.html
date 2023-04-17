@@ -9,13 +9,28 @@
     <link href="/css/main.css" rel="stylesheet" />
   </head>
   <body>
-    <!-- <header title="12" id="comfi-banner">hello</header> -->
-    <div class="comfi-badges" data_style="1" title="12" id="comfi-banner"></div>
+    <div id="comfi-banner"></div>
+    <div id="comfi-banners"></div>
+
     <script defer type="module" src="./index.js"></script>
     <script defer type="module">
       import Comfi from "/index.js";
-      Comfi("comfi");
-      console.log("main");
+      Comfi({
+        currency: "SAR",
+        price: 200,
+        plan: 3,
+        style: 2,
+        logo: false,
+        id: "comfi-banner",
+      });
+      Comfi({
+        currency: "SAR",
+        price: 400,
+        plan: 3,
+        style: 1,
+        logo: false,
+        id: "comfi-banners",
+      });
     </script>
   </body>
 </html>
