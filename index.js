@@ -36,6 +36,7 @@ const monthPrice = (price, plan) => {
   return Math.round((price * 100) / plan) / 100;
 };
 
+console.log("first");
 function Comfi({
   currency = "SAR",
   price = 100,
