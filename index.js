@@ -35,7 +35,10 @@ if (comfiBanner) {
 }
 
 function Comfi(item) {
-  return item === "comfi";
+  console.log("comfi-function");
+  return item === "comfi" && item;
 }
 
-module.exports = Comfi;
+export default Comfi;
+
+console.log("index");

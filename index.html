@@ -11,6 +11,11 @@
   <body>
     <!-- <header title="12" id="comfi-banner">hello</header> -->
     <div class="comfi-badges" data_style="1" title="12" id="comfi-banner"></div>
-    <script src="./index.js"></script>
+    <script defer type="module" src="./index.js"></script>
+    <script defer type="module">
+      import Comfi from "/index.js";
+      Comfi("comfi");
+      console.log("main");
+    </script>
   </body>
 </html>
