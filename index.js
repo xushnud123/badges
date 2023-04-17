@@ -45,6 +45,7 @@ function Comfi({
   id = "",
 }) {
   const comfiBanner = document.getElementById(id);
+  console.log(id);
   if (comfiBanner) {
     comfiBanner.classList.add("comfi-badges");
     comfiBanner.classList.add(`style_${logo ? "3" : style}`);
