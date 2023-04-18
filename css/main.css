@@ -22,19 +22,56 @@
   width: 69.5px;
   height: 20px;
 }
-.style_1 {
+.comfi-badges.style_1 {
   background-color: rgba(81, 252, 143, 1);
 }
 
-.style_2 {
+.comfi-badges.style_2 {
   background-color: #000000;
   color: #ffffff;
 }
 
-.style_2 span svg {
+.comfi-badges.style_2 span svg {
   color: #fff;
 }
 
-.style_3 {
+.comfi-badges.style_3 {
   background: #ffffff;
+}
+
+.comfi-banner {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 5px 0;
+  color: #fff;
+  gap: 6px;
+}
+
+.comfi-banner .title {
+  margin: 0;
+  font-family: "Work Sans";
+  font-style: normal;
+  font-weight: 520;
+  font-size: 14px;
+  line-height: 20px;
+}
+
+.comfi-banner .logo {
+  width: 76.45px;
+  height: 22px;
+}
+
+.comfi-banner.style_1 {
+  background: #000000;
+  color: #fff;
+}
+.comfi-banner.style_2 {
+  background: #51fc8f;
+  color: #000000;
+}
+
+.comfi-banner.style_2 svg {
+  fill: transparent;
 }
