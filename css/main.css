@@ -1,3 +1,10 @@
+@font-face {
+  font-family: "Work Sans";
+  src: local("Work Sans"),
+    url("../fonts/WorkSans-Medium.woff2") format("opentype") tech(color-COLRv1), url("../fonts/WorkSans-Medium.woff2")
+      format("opentype"), url("../fonts/WorkSans-Medium.woff2") format("woff");
+}
+
 .comfi-badges {
   display: flex;
   align-items: center;
