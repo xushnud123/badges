@@ -2,7 +2,11 @@
   "name": "comfi-badges",
   "version": "1.0.0",
   "description": "comfi uchun badges",
-  "main": "index.js",
+  "main": "dist/index.js",
+  "unpkg": {
+    "main": "dist/my-library.min.js",
+    "style": "dist/my-library.min.css"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
