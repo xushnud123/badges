@@ -151,4 +151,5 @@ function ComfiBanner({ id = "", style = 1, discount = 10 }) {
   }
 }
 
-export { ComfiBadges, ComfiBanner };
+window.ComfiBadges = ComfiBadges;
+window.ComfiBanner = ComfiBanner;
