@@ -20,7 +20,6 @@ function ComfiBadges({
   logo = false,
 }) {
   const comfiBadges = document.getElementById(id);
-
   if (comfiBadges) {
     comfiBadges.classList.add("comfi-badges");
     comfiBadges.classList.add(`style_${logo ? "3" : style}`);
