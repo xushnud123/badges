@@ -299,9 +299,9 @@ function ComfiBadges({
 
   // # close
   badgesOpen.addEventListener("click", () => modal.classList.remove("hidden"));
-  openModalBtn.addEventListener("click", () =>
-    modal.classList.remove("hidden")
-  );
+  //  openModalBtn.addEventListener("click", () =>
+  //     modal.classList.remove("hidden")
+  //   );
 }
 
 // #  banner section
