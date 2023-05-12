@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Comfi-script</title>
     <link href="/css/fonts.css" rel="stylesheet" />
     <link href="/css/comfi-badges.css" rel="stylesheet" />
     <link href="/css/index.css" rel="stylesheet" />
@@ -14,7 +14,32 @@
       <div id="comfi-badges"></div>
     </section>
     <div id="comfi-banner"></div>
+    <button class="btn btn-open">Open Modal</button>
 
+    <section>
+      <div class="wrapper-monthly">
+        <div class="left-monthly">
+          <div class="right-flex">
+            <p class="p_tag">Flexible payments by</p>
+            <div class="logo">
+              <img
+                width="{50}"
+                height="{13}"
+                src="https://firebasestorage.googleapis.com/v0/b/comfi-prod.appspot.com/o/Logotype.svg?alt=media&token=001c4229-5f14-46b4-bcba-843c7c7c4145"
+                alt="img not found"
+              />
+            </div>
+          </div>
+          <h1 class="title_enjoy">Enjoy annual discounts now, pay monthly</h1>
+          <h5 class="description_tag">No interest. No fees.</p>
+          <a href="#" class="monthly-a"><div class="monthly-btn"> Contact Sales</div></button>
+          <p class="description">Contact our sales to purchase with Comfi.</p>
+        </div>
+        <div class="right-monthly">
+          <img class="right-monthly-img" src="https://firebasestorage.googleapis.com/v0/b/comfi-prod.appspot.com/o/card_right_img.png?alt=media&token=0c137322-0fd4-42bc-b761-78b2bec806c9" alt="Take annual commitment, but pay monthly" />
+        </div>
+      </div>
+    </section>
     <script defer type="module" src="./comfi-badges.js"></script>
     <script defer type="module">
       // import { ComfiBadges, ComfiBanner } from "./comfi-badges.js";
@@ -22,14 +47,14 @@
         id: "comfi-badges",
         currency: "SAR",
         price: 200,
-        plan: 3,
-        style: 1,
-        logo: true,
+        plans: [3, 4, 9, 12],
+        style: 4,
+        url:'https://medium.com/swlh/web-development-fundamentals-for-newcomers-part-1-front-end-2e77f830754e'
       });
 
       window.ComfiBanner({
         id: "comfi-banner",
-        style: 2,
+        style: 1,
         discount: 15,
       });
     </script>

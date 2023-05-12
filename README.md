@@ -1,2 +1,3 @@
-# badges 
-comfi uchun 
+# badges
+
+comfi uchun

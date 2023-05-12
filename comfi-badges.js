@@ -1,3 +1,6 @@
+const overlay = document.querySelector(".overlay");
+const openModalBtn = document.querySelector(".btn-open");
+
 const getAllAttributes = (el) =>
   el.getAttributeNames().reduce(
     (obj, name) => ({
@@ -7,27 +10,204 @@ const getAllAttributes = (el) =>
     {}
   );
 
-const monthPrice = (price, plan) => {
-  return Math.round((price * 100) / plan) / 100;
+// #  badges section
+
+const monthPrice = (price, planArray) => {
+  let max = 0;
+  planArray.forEach((a) => {
+    max < a && (max = a);
+  });
+
+  return Math.round(price / max);
 };
+
+const dotsMapper = (plans, percentage, step, index, price) => {
+  let dot = "";
+  plans.forEach((item, idx) => {
+    dot =
+      dot +
+      `<div data-id=${idx} data-step=${item} style="left:${
+        (idx + 1) * percentage
+      }%" class="dots ${step === item && "dots-focus"} ${
+        index && index - 1 > idx && "dots-active"
+      } ${step === plans[plans.length - 1] && "dots-active"}"></div>`;
+  });
+  plans.forEach((item, idx) => {
+    dot =
+      dot +
+      `<div
+                      style="left: ${(idx + 1) * percentage}%"
+                      class="
+                        content
+                        ${step === item && "content-focus"} ${
+        index && index - 1 > idx && "content-active"
+      } ${step === plans[plans.length - 1] && "content-active"}
+                      ">
+                      <div class="description_content"> Pay in ${item}</div>
+                      <h1 class="price">
+                        $ ${Math.round(Number(price) / Number(item))}
+                      </h1>
+                    </div>`;
+  });
+  return dot;
+};
+
+const track = (step, plans = [], index, percentage) => {
+  return `<div style="width:${
+    step === plans[plans.length - 1] ? 100 : index && index * percentage
+  }%" class="track"></div>`;
+};
+
+const cardReturn = (plans, percentage, step, index, price, url) => {
+  if (url) {
+    return ` <div class="wrapper-monthly">
+    <button class="btn-close"><img src="https://firebasestorage.googleapis.com/v0/b/comfi-prod.appspot.com/o/Close.svg?alt=media&token=f28ea914-8ceb-427b-9c68-e1188112560d" alt="close btn"/></button>
+        <div class="left-monthly">
+          <div class="right-flex">
+            <p class="p_tag">Flexible payments by</p>
+            <div class="logo">
+              <img
+                width="{50}"
+                height="{13}"
+                src="https://firebasestorage.googleapis.com/v0/b/comfi-prod.appspot.com/o/Logotype.svg?alt=media&token=001c4229-5f14-46b4-bcba-843c7c7c4145"
+                alt="img not found"
+              />
+            </div>
+          </div>
+          <h1 class="title_enjoy">Enjoy annual discounts now, pay monthly</h1>
+          <h5 class="description_tag">No interest. No fees.</p>
+          <a href="${url}" target="_blank"  rel="noopener noreferrer" class="monthly-a"><div class="monthly-btn"> Contact Sales</div></button>
+          <p class="description">Contact our sales to purchase with Comfi.</p>
+        </div>
+        <div class="right-monthly">
+          <img class="right-monthly-img" src="https://firebasestorage.googleapis.com/v0/b/comfi-prod.appspot.com/o/card_right_img.png?alt=media&token=0c137322-0fd4-42bc-b761-78b2bec806c9" alt="Take annual commitment, but pay monthly" />
+        </div>
+      </div>`;
+  }
+  return `<div class="wrapper-widget">
+  <button class="btn-close"><img src="https://firebasestorage.googleapis.com/v0/b/comfi-prod.appspot.com/o/Close.svg?alt=media&token=f28ea914-8ceb-427b-9c68-e1188112560d" alt="close btn"/></button>
+      <div class="container-widget">
+        <div class="row-widget">
+          <div class="left-widget">
+            <img
+              class="cards-img"
+              src="https://firebasestorage.googleapis.com/v0/b/comfi-prod.appspot.com/o/cards_2.svg?alt=media&token=1afd85f8-a0a4-4e26-8aca-42b5bf58bf25"
+              alt="img not found"
+            />
+          </div>
+          <div class="right-widget">
+            <div class="right-flex">
+              <p class="p_tag">Flexible payments by</p>
+              <div class="logo">
+                <img
+                  width="{50}"
+                  height="{13}"
+                  src="https://firebasestorage.googleapis.com/v0/b/comfi-prod.appspot.com/o/Logotype.svg?alt=media&token=001c4229-5f14-46b4-bcba-843c7c7c4145"
+                  alt="img not found"
+                />
+              </div>
+            </div>
+            <h1 class="title_enjoy">Enjoy annual discounts now, pay monthly</h1>
+            <p class="description">No interest. No fees.</p>
+          </div>
+        </div>
+        <div class="row-slider">
+          <h1 class="slider-title">Choose your plan</h1>
+          <div class="row-container">
+            <div class="row-rows">
+              ${dotsMapper(plans, percentage, step, index, price)}
+              </div>
+            <div class="row-slider_bac">${track(
+              step,
+              plans,
+              index,
+              percentage
+            )}</div>
+          </div>
+        </div>
+        <div class="rows">
+          <h2 class="title_name">How it works?</h2>
+          <div class="d-flex">
+            <span>1</span> Choose
+            <div class="logo">
+              <img
+                width="{57}"
+                height="{13}"
+                src="https://firebasestorage.googleapis.com/v0/b/comfi-prod.appspot.com/o/Logotype.svg?alt=media&token=001c4229-5f14-46b4-bcba-843c7c7c4145"
+                alt="img not found"
+              />
+            </div>
+            at checkout
+          </div>
+          <div class="d-flex"><span>2</span> Select a payment plan</div>
+          <div class="d-flex">
+            <span>3</span> Connect your bank acc. or Stripe for instant approval
+            later
+          </div>
+          <div class="d-flex">
+            <span>4</span>
+            Complete a payment using your debit/credit card
+          </div>
+        </div>
+        <div class="lists">
+          <div class="d-flex">
+            Use any card with Comfi
+            <div class="images">
+              <img
+                width="{50}"
+                height="{30}"
+                src="https://firebasestorage.googleapis.com/v0/b/comfi-prod.appspot.com/o/Methods.svg?alt=media&token=5a12d411-888b-4476-90df-fbe261dcf449"
+                alt="img not found"
+              />
+              <img
+                width="{50}"
+                height="{30}"
+                src="https://firebasestorage.googleapis.com/v0/b/comfi-prod.appspot.com/o/Methods%20(1).svg?alt=media&token=2a9f5daa-5413-4a75-b0e7-4a2532cf0459"
+                alt="img not found"
+              />
+              <img
+                width="{50}"
+                height="{30}"
+                src="https://firebasestorage.googleapis.com/v0/b/comfi-prod.appspot.com/o/Methods%20(2).svg?alt=media&token=7d8007d5-a109-41e0-bdc1-2c61f9bc0f61"
+                alt="img not found"
+              />
+              <img
+                width="{50}"
+                height="{30}"
+                src="https://firebasestorage.googleapis.com/v0/b/comfi-prod.appspot.com/o/Methods%20(3).svg?alt=media&token=9f344a74-b719-4ea5-9a88-f7d60eb27f9f"
+                alt="img not found"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>`;
+};
+
+monthPrice(1, [3, 4, 6, 9]);
 
 function ComfiBadges({
   id = "",
   currency = "SAR",
   price = 100,
-  plan = 4,
   style = 3,
-  logo = false,
+  plans = [3],
+  url = "",
 }) {
   const comfiBadges = document.getElementById(id);
+  let step;
+  let index;
+  let percentage = Math.round(100 / (plans.length + 1));
+
   if (comfiBadges) {
     comfiBadges.classList.add("comfi-badges");
-    comfiBadges.classList.add(`style_${logo ? "3" : style}`);
-    comfiBadges.insertAdjacentHTML(
-      "afterbegin",
-      `Pay only ${currency} ${monthPrice(price, plan)} ${
-        logo
-          ? `with <span class='logo'><svg
+    comfiBadges.classList.add(`style_${style}`);
+    comfiBadges.innerHTML = `<div class="badges-wrapper">Pay only ${currency} ${monthPrice(
+      price,
+      plans
+    )} today ${
+      style === 4
+        ? `with <span class='logo'><svg
             width='70'
             height='20'
             viewBox='0 0 70 20'
@@ -61,7 +241,7 @@ function ComfiBadges({
               fill='black'
             />
           </svg></span>`
-          : `today <span><svg
+        : `<span><svg
             width='20'
             height='20'
             viewBox='0 0 20 20'
@@ -74,11 +254,57 @@ function ComfiBadges({
               fill='currentColor'
             />
           </svg></span>`
-      }
-      `
-    );
+    }
+      </div>
+        <div class="modal hidden">
+      <div class="card">
+        ${cardReturn(plans, percentage, step, index, price, url)}
+      </div>
+    </div>
+      `;
   }
+
+  // #  modal section
+  const wrapper = document.querySelector(".wrapper-widget");
+  const modal = document.querySelector(".modal");
+  const badgesOpen = document.querySelector(".badges-wrapper");
+  const closeModalBtn = document.querySelector(".btn-close");
+  const rowRows = document.querySelector(".row-rows");
+  const rowTrack = document.querySelector(".row-slider_bac");
+
+  wrapper && wrapper.addEventListener("click", (e) => e.stopPropagation());
+
+  rowRows &&
+    rowRows.addEventListener("click", (e) => {
+      if (e.target.dataset.id) {
+        index = Number(e.target.dataset.id) + 1;
+        step = Number(e.target.dataset.step);
+        rowRows.innerHTML = `${dotsMapper(
+          plans,
+          percentage,
+          step,
+          index,
+          price
+        )}`;
+        rowTrack.innerHTML = `${track(step, plans, index, percentage)}`;
+      }
+    });
+
+  // # open
+  modal.addEventListener("click", () => modal.classList.add("hidden"));
+  closeModalBtn &&
+    closeModalBtn.addEventListener("click", () =>
+      modal.classList.add("hidden")
+    );
+
+  // # close
+  badgesOpen.addEventListener("click", () => modal.classList.remove("hidden"));
+  openModalBtn.addEventListener("click", () =>
+    modal.classList.remove("hidden")
+  );
 }
+
+// #  banner section
 
 function ComfiBanner({ id = "", style = 1, discount = 10 }) {
   const comfiBanner = document.getElementById(id);
@@ -86,9 +312,7 @@ function ComfiBanner({ id = "", style = 1, discount = 10 }) {
   if (comfiBanner) {
     comfiBanner.classList.add("comfi-banner");
     comfiBanner.classList.add(`style_${style}`);
-    comfiBanner.insertAdjacentHTML(
-      "afterbegin",
-      `<p class='title'>Save ${discount}% on annual plans and still pay monthly with</p>
+    comfiBanner.innerHTML = `<p class='title'>Save ${discount}% on annual plans and still pay monthly with</p>
         <span class='logo'>
         ${
           style === 1
@@ -145,8 +369,7 @@ function ComfiBanner({ id = "", style = 1, discount = 10 }) {
 `
         }
         </span>
-        `
-    );
+        `;
   }
 }
 
