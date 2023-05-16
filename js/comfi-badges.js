@@ -54,11 +54,11 @@ const dotsMapper = (plans, percentage, step, index, price) => {
 
 const track = (step, plans = [], index, percentage) => {
   return `<div style="width:${
-    step === plans[plans.length - 1] ? 100 : index && index * percentage
+    step === plans[plans.length - 1] ? 100 : Number(index && index * percentage)
   }%" class="track"></div>`;
 };
 
-const cardReturn = (plans, percentage, step, index, price, url) => {
+const cardReturn = (plans, percentage, step, index, price, url, id) => {
   if (url) {
     return ` <div class="wrapper-monthly">
     <button class="btn-close"><img class="close-img" src="https://firebasestorage.googleapis.com/v0/b/comfi-prod.appspot.com/o/Close.svg?alt=media&token=f28ea914-8ceb-427b-9c68-e1188112560d" alt="close btn"/></button>
@@ -114,15 +114,15 @@ const cardReturn = (plans, percentage, step, index, price, url) => {
         <div class="row-slider">
           <h1 class="slider-title">Choose your plan</h1>
           <div class="row-container">
-            <div class="row-rows">
+            <div class="row-rows slider-${id}">
               ${dotsMapper(plans, percentage, step, index, price)}
               </div>
-            <div class="row-slider_bac">${track(
-              step,
-              plans,
-              index,
-              percentage
-            )}</div>
+            <div class="row-slider_bac track-${id}">${track(
+    step,
+    plans,
+    index,
+    percentage
+  )}</div>
           </div>
         </div>
         <div class="rows">
@@ -258,7 +258,7 @@ function ComfiBadges({
       </div>
         <div class="modal hidden">
       <div class="card">
-        ${cardReturn(plans, percentage, step, index, price, url)}
+        ${cardReturn(plans, percentage, step, index, price, url, id)}
       </div>
     </div>
       `;
@@ -270,8 +270,8 @@ function ComfiBadges({
   const modal = document.querySelectorAll(".modal");
   const badgesOpen = document.querySelectorAll(".badges-wrapper");
   const closeModalBtn = document.querySelectorAll(".btn-close");
-  const rowRows = document.querySelectorAll(".row-rows");
-  const rowTrack = document.querySelectorAll(".row-slider_bac");
+  const rowRows = document.querySelector(`.slider-${id}`);
+  const rowTrack = document.querySelector(`.track-${id}`);
 
   wrapperWidget &&
     wrapperWidget.forEach((element, index) => {
@@ -283,28 +283,23 @@ function ComfiBadges({
     });
 
   rowRows &&
-    rowRows.forEach((element, idx) => {
-      element.addEventListener("click", (e) => {
-        if (e.target.dataset.id) {
-          index = Number(e.target.dataset.id) + 1;
-          step = Number(e.target.dataset.step);
-          element.innerHTML = `${dotsMapper(
-            plans,
-            percentage,
-            step,
-            index,
-            price
-          )}`;
+    // rowRows.forEach((element, idx) => {
+    rowRows.addEventListener("click", (e) => {
+      if (e.target.dataset.id) {
+        index = Number(e.target.dataset.id) + 1;
+        step = Number(e.target.dataset.step);
 
-          Array.from(rowTrack)[idx].innerHTML = `${track(
-            step,
-            plans,
-            index,
-            percentage
-          )}`;
-        }
-      });
+        rowTrack.innerHTML = `${track(step, plans, index, percentage)}`;
+        rowRows.innerHTML = `${dotsMapper(
+          plans,
+          percentage,
+          step,
+          index,
+          price
+        )}`;
+      }
     });
+  // });
 
   // # close
   modal.forEach((element, index) => {
