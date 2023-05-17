@@ -21,6 +21,10 @@ const monthPrice = (price, planArray) => {
   return Math.round(price / max);
 };
 
+const priceCalculate = (price, month) => {
+  return Math.round(Number(price) / Number(month));
+};
+
 const dotsMapper = (plans, percentage, step, index, price) => {
   let dot = "";
   plans.forEach((item, idx) => {
@@ -45,7 +49,7 @@ const dotsMapper = (plans, percentage, step, index, price) => {
                       ">
                       <div class="description_content"> Pay in ${item}</div>
                       <h1 class="price">
-                        $ ${Math.round(Number(price) / Number(item))}
+                        $ ${priceCalculate(price, item)}
                       </h1>
                     </div>`;
   });
@@ -56,6 +60,26 @@ const track = (step, plans = [], index, percentage) => {
   return `<div style="width:${
     step === plans[plans.length - 1] ? 100 : Number(index && index * percentage)
   }%" class="track"></div>`;
+};
+
+const planStates = (plans, price) => {
+  if (plans.length === 1)
+    return `<div class="left-widget-plans">
+    <p class="left-widget-plans_p">pay in ${plans[0]}</p>
+    <h2 class="left-widget-plans_h2">$${priceCalculate(price, plans[0])}/mo</h2>
+  </div>
+  <img
+      class="cards-img"
+       src="https://firebasestorage.googleapis.com/v0/b/comfi-prod.appspot.com/o/Rocket.svg?alt=media&token=00a45551-bc8f-4dd4-a201-7f6ef9afec2f"
+       alt="img not found"
+    />
+  `;
+  else
+    return `<img
+              class="cards-img"
+              src="https://firebasestorage.googleapis.com/v0/b/comfi-prod.appspot.com/o/cards.svg?alt=media&token=2a734487-4d9f-4f66-94b0-4baa0b77d68f"
+              alt="img not found"
+            />`;
 };
 
 const cardReturn = (plans, percentage, step, index, price, url, id) => {
@@ -89,11 +113,7 @@ const cardReturn = (plans, percentage, step, index, price, url, id) => {
       <div class="container-widget">
         <div class="row-widget">
           <div class="left-widget">
-            <img
-              class="cards-img"
-              src="https://firebasestorage.googleapis.com/v0/b/comfi-prod.appspot.com/o/cards_2.svg?alt=media&token=1afd85f8-a0a4-4e26-8aca-42b5bf58bf25"
-              alt="img not found"
-            />
+            ${planStates(plans, price)}
           </div>
           <div class="right-widget">
             <div class="right-flex">
@@ -111,20 +131,24 @@ const cardReturn = (plans, percentage, step, index, price, url, id) => {
             <p class="description">No interest. No fees.</p>
           </div>
         </div>
-        <div class="row-slider">
+        ${
+          plans.length !== 1
+            ? `<div class="row-slider">
           <h1 class="slider-title">Choose your plan</h1>
           <div class="row-container">
             <div class="row-rows slider-${id}">
               ${dotsMapper(plans, percentage, step, index, price)}
               </div>
             <div class="row-slider_bac track-${id}">${track(
-    step,
-    plans,
-    index,
-    percentage
-  )}</div>
+                step,
+                plans,
+                index,
+                percentage
+              )}</div>
           </div>
-        </div>
+        </div>`
+            : ``
+        }
         <div class="rows">
           <h2 class="title_name">How it works?</h2>
           <div class="d-flex">
@@ -256,7 +280,7 @@ function ComfiBadges({
           </svg></span>`
     }
       </div>
-        <div class="modal hidden">
+        <div class="modal">
       <div class="card">
         ${cardReturn(plans, percentage, step, index, price, url, id)}
       </div>
@@ -301,25 +325,25 @@ function ComfiBadges({
     });
   // });
 
-  // # close
+  // # open
   modal.forEach((element, index) => {
     element.addEventListener("click", () => {
       document.body.classList.remove("open-modal");
-      Array.from(modal)[index].classList.add("hidden");
+      Array.from(modal)[index].classList.remove("hidden");
     });
   });
   closeModalBtn &&
     closeModalBtn.forEach((element, index) => {
       element.addEventListener("click", () => {
         document.body.classList.remove("open-modal");
-        Array.from(modal)[index].classList.add("hidden");
+        Array.from(modal)[index].classList.remove("hidden");
       });
     });
-  // # open
+  // # close
   badgesOpen.forEach((element, index) => {
     element.addEventListener("click", () => {
       document.body.classList.add("open-modal");
-      Array.from(modal)[index].classList.remove("hidden");
+      Array.from(modal)[index].classList.add("hidden");
     });
   });
   //  openModalBtn.addEventListener("click", () =>
