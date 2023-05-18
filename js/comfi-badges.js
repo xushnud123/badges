@@ -219,8 +219,8 @@ function ComfiBadges({
   url = "",
 }) {
   const comfiBadges = document.getElementById(id);
-  let step;
-  let index;
+  let step = monthPrice(price, plans)?.[1];
+  let index = plans.indexOf(monthPrice(price, plans)?.[1]) + 1;
   let percentage = Math.round(100 / (plans.length + 1));
 
   if (comfiBadges) {
