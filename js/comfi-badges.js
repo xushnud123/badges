@@ -18,7 +18,7 @@ const monthPrice = (price, planArray) => {
     max < a && (max = a);
   });
 
-  return Math.round(price / max);
+  return [Math.round(price / max), max];
 };
 
 const priceCalculate = (price, month) => {
@@ -34,7 +34,7 @@ const dotsMapper = (plans, percentage, step, index, price) => {
         (idx + 1) * percentage
       }%" class="dots ${step === item && "dots-focus"} ${
         index && index - 1 > idx && "dots-active"
-      } ${step === plans[plans.length - 1] && "dots-active"}"></div>`;
+      } "></div>`;
   });
   plans.forEach((item, idx) => {
     dot =
@@ -69,7 +69,7 @@ const planStates = (plans, price) => {
     <h2 class="left-widget-plans_h2">$${priceCalculate(price, plans[0])}/mo</h2>
   </div>
   <img
-      class="cards-img"
+      class="cards-img rocket"
        src="https://firebasestorage.googleapis.com/v0/b/comfi-prod.appspot.com/o/Rocket.svg?alt=media&token=00a45551-bc8f-4dd4-a201-7f6ef9afec2f"
        alt="img not found"
     />
@@ -226,10 +226,9 @@ function ComfiBadges({
   if (comfiBadges) {
     comfiBadges.classList.add("comfi-badges");
     comfiBadges.classList.add(`style_${style}`);
-    comfiBadges.innerHTML = `<div class="badges-wrapper">Pay only ${currency} ${monthPrice(
-      price,
-      plans
-    )} today ${
+    comfiBadges.innerHTML = `<div class="badges-wrapper">Pay only ${currency} ${
+      monthPrice(price, plans)?.[0]
+    } today ${
       style === 4
         ? `with <span class='logo'><svg
             width='70'

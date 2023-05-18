@@ -212,9 +212,9 @@ button {
   height: 33.07px;
 }
 
-@media screen and (max-width: 520px) {
+@media screen and (max-width: 550px) {
   .wrapper-widget .container-widget .row-widget .right-flex {
-    padding-right: 20px;
+    padding-right: 30px;
   }
 }
 
@@ -293,6 +293,10 @@ button {
   height: auto;
 }
 
+.wrapper-widget .container-widget .row-widget .left-widget .rocket {
+  width: 250px;
+}
+
 .wrapper-widget .container-widget .row-widget .left-widget .left-widget-plans {
   position: absolute;
   top: 50%;
@@ -331,8 +335,8 @@ button {
   font-family: "Work Sans";
   font-style: normal;
   font-weight: 650;
-  font-size: 42px;
-  line-height: 49px;
+  font-size: 32px;
+  line-height: 39px;
   font-feature-settings: "ss03" on, "ss04" on, "salt" on;
   color: #000000;
   text-align: left;
@@ -546,6 +550,10 @@ button {
     transform 0.2s cubic-bezier(0.5, 0.67, 0.8, 1.23);
 }
 
+.wrapper-widget .container-widget .row-slider .row-rows .content-focus {
+  top: 30px;
+}
+
 .wrapper-widget .container-widget .row-slider .row-rows .content-focus .price {
   opacity: 1;
   transform: none;
@@ -595,12 +603,22 @@ button {
 
 @media screen and (max-width: 600px) {
   .wrapper-widget .container-widget .row-widget .left-widget {
-    width: 180px;
+    width: 200px;
     height: auto;
   }
   .wrapper-widget .container-widget .row-widget .left-widget img {
-    width: 180px;
+    width: 200px;
     height: auto;
+  }
+  .wrapper-widget .container-widget .row-widget .left-widget .rocket {
+    width: 200px;
+  }
+}
+
+@media screen and (max-width: 550px) and (min-width: 500px) {
+  .wrapper-widget .container-widget .row-widget .title_enjoy {
+    font-size: 32px;
+    line-height: 39px;
   }
 }
 
@@ -620,12 +638,15 @@ button {
     line-height: 18px;
   }
   .wrapper-widget .container-widget .row-widget .left-widget {
-    width: 150px;
+    width: 180px;
     height: auto;
   }
   .wrapper-widget .container-widget .row-widget .left-widget img {
-    width: 150px;
+    width: 180px;
     height: auto;
+  }
+  .wrapper-widget .container-widget .row-widget .left-widget .rocket {
+    width: 180px;
   }
 
   .wrapper-widget
@@ -648,7 +669,7 @@ button {
   }
 }
 
-@media screen and (max-width: 410px) {
+@media screen and (max-width: 430px) {
   .wrapper-widget .container-widget .row-widget {
     flex-direction: column;
   }
