@@ -21,6 +21,49 @@ const monthPrice = (price, planArray) => {
   return [Math.round(price / max), max];
 };
 
+const percentageHandler = (idx, plans, percentage) => {
+  if (plans.length === 2) {
+    switch (idx) {
+      case 0:
+        return 30;
+      case 1:
+        return 70;
+      default:
+        return 1;
+    }
+  }
+  if (plans.length === 3 && idx === 1) {
+    console.log(idx);
+    return (idx + 1) * percentage;
+  }
+
+  if (plans.length === 5) {
+    switch (idx) {
+      case 0:
+        return 10;
+      case 1:
+        return 30;
+      case 2:
+        return 50;
+      case 3:
+        return 70;
+      case 4:
+        return 90;
+      default:
+        return Math.round((80 / 3) * idx + 10);
+    }
+  }
+
+  switch (idx) {
+    case 0:
+      return 10;
+    case plans.length - 1:
+      return 90;
+    default:
+      return Math.round((80 / 3) * idx + 10);
+  }
+};
+
 const priceCalculate = (price, month) => {
   return Math.round(Number(price) / Number(month));
 };
@@ -30,9 +73,11 @@ const dotsMapper = (plans, percentage, step, index, price) => {
   plans.forEach((item, idx) => {
     dot =
       dot +
-      `<div data-id=${idx} data-step=${item} style="left:${
-        (idx + 1) * percentage
-      }%" class="dots ${step === item && "dots-focus"} ${
+      `<div data-id=${idx} data-step=${item} style="left:${percentageHandler(
+        idx,
+        plans,
+        percentage
+      )}%" class="dots ${step === item && "dots-focus"} ${
         index && index - 1 > idx && "dots-active"
       } "></div>`;
   });
@@ -40,7 +85,11 @@ const dotsMapper = (plans, percentage, step, index, price) => {
     dot =
       dot +
       `<div
-                      style="left: ${(idx + 1) * percentage}%"
+                      style="left: ${percentageHandler(
+                        idx,
+                        plans,
+                        percentage
+                      )}%"
                       class="
                         content
                         ${step === item && "content-focus"} ${
@@ -58,7 +107,9 @@ const dotsMapper = (plans, percentage, step, index, price) => {
 
 const track = (step, plans = [], index, percentage) => {
   return `<div style="width:${
-    step === plans[plans.length - 1] ? 100 : Number(index && index * percentage)
+    step === plans[plans.length - 1]
+      ? 100
+      : percentageHandler(index - 1, plans, percentage)
   }%" class="track"></div>`;
 };
 
