@@ -33,7 +33,6 @@ const percentageHandler = (idx, plans, percentage) => {
     }
   }
   if (plans.length === 3 && idx === 1) {
-    console.log(idx);
     return (idx + 1) * percentage;
   }
 
@@ -268,6 +267,7 @@ function ComfiBadges({
   style = 3,
   plans = [3],
   url = "",
+  IOnMonthChange,
 }) {
   const comfiBadges = document.getElementById(id);
   let step = monthPrice(price, plans)?.[1];
@@ -362,6 +362,8 @@ function ComfiBadges({
       if (e.target.dataset.id) {
         index = Number(e.target.dataset.id) + 1;
         step = Number(e.target.dataset.step);
+
+        IOnMonthChange && IOnMonthChange(step);
 
         rowTrack.innerHTML = `${track(step, plans, index, percentage)}`;
         rowRows.innerHTML = `${dotsMapper(
