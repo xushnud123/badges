@@ -330,7 +330,7 @@ function ComfiBadges({
           </svg></span>`
     }
       </div>
-        <div class="modal">
+        <div class="modal hidden">
       <div class="card">
         ${cardReturn(plans, percentage, step, index, price, url, id)}
       </div>
@@ -365,14 +365,53 @@ function ComfiBadges({
 
         onMonthChange && onMonthChange(step);
 
-        rowTrack.innerHTML = `${track(step, plans, index, percentage)}`;
-        rowRows.innerHTML = `${dotsMapper(
-          plans,
-          percentage,
-          step,
-          index,
-          price
-        )}`;
+        //# track
+        const newTrack = Array.from(
+          document
+            .createRange()
+            .createContextualFragment(track(step, plans, index, percentage))
+            .querySelectorAll("*")
+        );
+        const currentTrack = Array.from(rowTrack.querySelectorAll("*"));
+        newTrack.forEach((newEl, i) => {
+          const curEl = currentTrack[i];
+          if (
+            !newEl.isEqualNode(curEl) &&
+            newEl.firstChild?.nodeValue.trim() !== ""
+          ) {
+            curEl.textContent = newEl.textContent;
+          }
+          // Updates changed ATTRIBUTES
+          Array.from(newEl.attributes).forEach((attr) =>
+            curEl.setAttribute(attr.name, attr.value)
+          );
+        });
+
+        //# dots
+        const newRows = Array.from(
+          document
+            .createRange()
+            .createContextualFragment(
+              dotsMapper(plans, percentage, step, index, price)
+            )
+            .querySelectorAll("*")
+        );
+        const currentRows = Array.from(rowRows.querySelectorAll("*"));
+        newRows.forEach((newEl, i) => {
+          const curEl = currentRows[i];
+
+          if (
+            !newEl.isEqualNode(curEl) &&
+            newEl.firstChild?.nodeValue.trim() !== ""
+          ) {
+            curEl.textContent = newEl.textContent;
+          }
+          // Updates changed ATTRIBUTES
+          if (!newEl.isEqualNode(curEl))
+            Array.from(newEl.attributes).forEach((attr) =>
+              curEl.setAttribute(attr.name, attr.value)
+            );
+        });
       }
     });
   // });
