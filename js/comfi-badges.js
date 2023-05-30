@@ -330,7 +330,7 @@ function ComfiBadges({
           </svg></span>`
     }
       </div>
-        <div class="modal hidden">
+        <div class="modal">
       <div class="card">
         ${cardReturn(plans, percentage, step, index, price, url, id)}
       </div>
