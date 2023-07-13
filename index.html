@@ -13,10 +13,13 @@
     <section class="container">
       <div id="comfi-badges_1"></div>
     </section>
+
     <div id="comfi-banner"></div>
     <button class="btn btn-open">Open Modal</button>
 
-    <section>
+    <div id="custom"></div>
+
+    <!-- <section>
       <div class="wrapper-monthly">
         <div class="left-monthly">
           <div class="right-flex">
@@ -45,17 +48,31 @@
           />
         </div>
       </div>
-    </section>
+    </section> -->
     <script defer type="module" src="js/comfi-badges.js"></script>
     <script defer type="module">
+      const custom = document.getElementById("custom");
       // import { ComfiBadges, ComfiBanner } from "./comfi-badges.js";
+
       window.ComfiBadges({
         id: "comfi-badges_1",
         currency: "SAR",
         price: 10000,
-        plans: [3, 4, 6, 9, 12],
         style: 4,
+        plans: [3, 4, 6, 9, 12],
+        url: "",
+        customOpenModal: true,
       });
+
+      window.CustomComfiBadges({
+        id: "custom",
+        price: 10000,
+        plans: [3],
+        url: "https://comfi.app/",
+        customOpenModal: true,
+      });
+
+      // custom.innerHTML = customBadges;
 
       window.ComfiBanner({
         id: "comfi-banner",

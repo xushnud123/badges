@@ -132,10 +132,20 @@ const planStates = (plans, price) => {
             />`;
 };
 
-const cardReturn = (plans, percentage, step, index, price, url, id) => {
+const cardReturn = (plans, percentage, step, index, price, url, id, custom) => {
   if (url) {
     return ` <div class="wrapper-monthly">
-    <button class="btn-close"><img class="close-img" src="https://firebasestorage.googleapis.com/v0/b/comfi-prod.appspot.com/o/Close.svg?alt=media&token=f28ea914-8ceb-427b-9c68-e1188112560d" alt="close btn"/></button>
+    ${
+      custom
+        ? `<button class='btn-close'>
+          <img
+            class='close-img'
+            src='https://firebasestorage.googleapis.com/v0/b/comfi-prod.appspot.com/o/Close.svg?alt=media&token=f28ea914-8ceb-427b-9c68-e1188112560d'
+            alt='close btn'
+          />
+        </button>`
+        : ""
+    }
         <div class="left-monthly">
           <div class="right-flex">
             <p class="p_tag">Flexible payments by</p>
@@ -159,7 +169,17 @@ const cardReturn = (plans, percentage, step, index, price, url, id) => {
       </div>`;
   }
   return `<div class="wrapper-widget">
-  <button class="btn-close"><img class="close-img" src="https://firebasestorage.googleapis.com/v0/b/comfi-prod.appspot.com/o/Close.svg?alt=media&token=f28ea914-8ceb-427b-9c68-e1188112560d" alt="close btn"/></button>
+   ${
+     custom
+       ? `<button class='btn-close'>
+          <img
+            class='close-img'
+            src='https://firebasestorage.googleapis.com/v0/b/comfi-prod.appspot.com/o/Close.svg?alt=media&token=f28ea914-8ceb-427b-9c68-e1188112560d'
+            alt='close btn'
+          />
+        </button>`
+       : ""
+   }
       <div class="container-widget">
         <div class="row-widget">
           <div class="left-widget">
@@ -332,7 +352,7 @@ function ComfiBadges({
       </div>
         <div class="modal">
       <div class="card">
-        ${cardReturn(plans, percentage, step, index, price, url, id)}
+        ${cardReturn(plans, percentage, step, index, price, url, id, true)}
       </div>
     </div>
       `;
@@ -437,9 +457,219 @@ function ComfiBadges({
       Array.from(modal)[index].classList.add("hidden");
     });
   });
-  //  openModalBtn.addEventListener("click", () =>
-  //     modal.classList.remove("hidden")
-  //   );
+}
+
+// # custom badges
+
+function CustomHandler() {
+  // #  modal section
+  const wrapperWidget = document.querySelectorAll(".wrapper-widget");
+  const wrapperMonthly = document.querySelectorAll(".wrapper-monthly");
+  const modal = document.querySelectorAll(".modal");
+  const badgesOpen = document.querySelectorAll(".badges-wrapper");
+  const closeModalBtn = document.querySelectorAll(".btn-close");
+  const rowRows = document.querySelector(`.slider-${id}`);
+  const rowTrack = document.querySelector(`.track-${id}`);
+
+  wrapperWidget &&
+    wrapperWidget.forEach((element, index) => {
+      element.addEventListener("click", (e) => e.stopPropagation());
+    });
+  wrapperMonthly &&
+    wrapperMonthly.forEach((element) => {
+      element.addEventListener("click", (e) => e.stopPropagation());
+    });
+
+  rowRows &&
+    // rowRows.forEach((element, idx) => {
+    rowRows.addEventListener("click", (e) => {
+      if (e.target.dataset.id) {
+        index = Number(e.target.dataset.id) + 1;
+        step = Number(e.target.dataset.step);
+
+        onMonthChange && onMonthChange(step);
+
+        //# track
+        const newTrack = Array.from(
+          document
+            .createRange()
+            .createContextualFragment(track(step, plans, index, percentage))
+            .querySelectorAll("*")
+        );
+        const currentTrack = Array.from(rowTrack.querySelectorAll("*"));
+        newTrack.forEach((newEl, i) => {
+          const curEl = currentTrack[i];
+          if (
+            !newEl.isEqualNode(curEl) &&
+            newEl.firstChild?.nodeValue.trim() !== ""
+          ) {
+            curEl.textContent = newEl.textContent;
+          }
+          // Updates changed ATTRIBUTES
+          Array.from(newEl.attributes).forEach((attr) =>
+            curEl.setAttribute(attr.name, attr.value)
+          );
+        });
+
+        //# dots
+        const newRows = Array.from(
+          document
+            .createRange()
+            .createContextualFragment(
+              dotsMapper(plans, percentage, step, index, price)
+            )
+            .querySelectorAll("*")
+        );
+        const currentRows = Array.from(rowRows.querySelectorAll("*"));
+        newRows.forEach((newEl, i) => {
+          const curEl = currentRows[i];
+
+          if (
+            !newEl.isEqualNode(curEl) &&
+            newEl.firstChild?.nodeValue.trim() !== ""
+          ) {
+            curEl.textContent = newEl.textContent;
+          }
+          // Updates changed ATTRIBUTES
+          if (!newEl.isEqualNode(curEl))
+            Array.from(newEl.attributes).forEach((attr) =>
+              curEl.setAttribute(attr.name, attr.value)
+            );
+        });
+      }
+    });
+  // });
+
+  // # open
+  modal.forEach((element, index) => {
+    element.addEventListener("click", () => {
+      document.body.classList.remove("open-modal");
+      Array.from(modal)[index].classList.remove("hidden");
+    });
+  });
+  closeModalBtn &&
+    closeModalBtn.forEach((element, index) => {
+      element.addEventListener("click", () => {
+        document.body.classList.remove("open-modal");
+        Array.from(modal)[index].classList.remove("hidden");
+      });
+    });
+  // # close
+  badgesOpen.forEach((element, index) => {
+    element.addEventListener("click", () => {
+      document.body.classList.add("open-modal");
+      Array.from(modal)[index].classList.add("hidden");
+    });
+  });
+}
+
+function CustomComfiBadges({
+  id = "",
+  price = 100,
+  plans = [3],
+  url = "",
+  onMonthChange,
+}) {
+  const comfiBadges = document.getElementById(id);
+  let step = monthPrice(price, plans)?.[1];
+  let index = plans.indexOf(monthPrice(price, plans)?.[1]) + 1;
+  let percentage = Math.round(100 / (plans.length + 1));
+  if (comfiBadges) {
+    comfiBadges.innerHTML = `
+        <div class="card">
+          ${cardReturn(plans, percentage, step, index, price, url, id, false)}
+        </div>
+        `;
+  }
+
+  // #  modal section
+  const modal = document.querySelectorAll(".modal");
+  const badgesOpen = document.querySelectorAll(".badges-wrapper");
+  const closeModalBtn = document.querySelectorAll(".btn-close");
+  const rowRows = document.querySelector(`.slider-${id}`);
+  const rowTrack = document.querySelector(`.track-${id}`);
+
+  rowRows &&
+    // rowRows.forEach((element, idx) => {
+    rowRows.addEventListener("click", (e) => {
+      if (e.target.dataset.id) {
+        index = Number(e.target.dataset.id) + 1;
+        step = Number(e.target.dataset.step);
+
+        onMonthChange && onMonthChange(step);
+
+        //# track
+        const newTrack = Array.from(
+          document
+            .createRange()
+            .createContextualFragment(track(step, plans, index, percentage))
+            .querySelectorAll("*")
+        );
+        const currentTrack = Array.from(rowTrack.querySelectorAll("*"));
+        newTrack.forEach((newEl, i) => {
+          const curEl = currentTrack[i];
+          if (
+            !newEl.isEqualNode(curEl) &&
+            newEl.firstChild?.nodeValue.trim() !== ""
+          ) {
+            curEl.textContent = newEl.textContent;
+          }
+          // Updates changed ATTRIBUTES
+          Array.from(newEl.attributes).forEach((attr) =>
+            curEl.setAttribute(attr.name, attr.value)
+          );
+        });
+
+        //# dots
+        const newRows = Array.from(
+          document
+            .createRange()
+            .createContextualFragment(
+              dotsMapper(plans, percentage, step, index, price)
+            )
+            .querySelectorAll("*")
+        );
+        const currentRows = Array.from(rowRows.querySelectorAll("*"));
+        newRows.forEach((newEl, i) => {
+          const curEl = currentRows[i];
+
+          if (
+            !newEl.isEqualNode(curEl) &&
+            newEl.firstChild?.nodeValue.trim() !== ""
+          ) {
+            curEl.textContent = newEl.textContent;
+          }
+          // Updates changed ATTRIBUTES
+          if (!newEl.isEqualNode(curEl))
+            Array.from(newEl.attributes).forEach((attr) =>
+              curEl.setAttribute(attr.name, attr.value)
+            );
+        });
+      }
+    });
+  // });
+
+  // # open
+  modal.forEach((element, index) => {
+    element.addEventListener("click", () => {
+      document.body.classList.remove("open-modal");
+      Array.from(modal)[index].classList.remove("hidden");
+    });
+  });
+  closeModalBtn &&
+    closeModalBtn.forEach((element, index) => {
+      element.addEventListener("click", () => {
+        document.body.classList.remove("open-modal");
+        Array.from(modal)[index].classList.remove("hidden");
+      });
+    });
+  // # close
+  badgesOpen.forEach((element, index) => {
+    element.addEventListener("click", () => {
+      document.body.classList.add("open-modal");
+      Array.from(modal)[index].classList.add("hidden");
+    });
+  });
 }
 
 // #  banner section
@@ -513,3 +743,4 @@ function ComfiBanner({ id = "", style = 1, discount = 10 }) {
 
 window.ComfiBadges = ComfiBadges;
 window.ComfiBanner = ComfiBanner;
+window.CustomComfiBadges = CustomComfiBadges;
