@@ -132,7 +132,25 @@ const planStates = (plans, price) => {
             />`;
 };
 
-const cardReturn = (plans, percentage, step, index, price, url, id, custom) => {
+const styleComfiModal = (style, activeStep) => {
+  if (style === 2) {
+    return `Split your payment into ${activeStep} interest free payments`;
+  }
+  return `Enjoy annual discounts now, pay monthly`;
+};
+
+const cardReturn = (
+  plans,
+  percentage,
+  step,
+  index,
+  price,
+  url,
+  id,
+  custom,
+  styleModal,
+  activeStep
+) => {
   if (url) {
     return ` <div class="wrapper-monthly">
     ${
@@ -158,7 +176,10 @@ const cardReturn = (plans, percentage, step, index, price, url, id, custom) => {
               />
             </div>
           </div>
-          <h1 class="title_enjoy">Enjoy annual discounts now, pay monthly</h1>
+          <h1 class="title_enjoy title-${id}">${styleComfiModal(
+      styleModal,
+      activeStep
+    )}</h1>
           <h5 class="description_tag">No interest. No fees.</p>
           <a href="${url}" target="_blank"  rel="noopener noreferrer" class="monthly-a"><div class="monthly-btn"> Contact Sales</div></a>
           <p class="description">Contact our sales to purchase with Comfi.</p>
@@ -197,7 +218,10 @@ const cardReturn = (plans, percentage, step, index, price, url, id, custom) => {
                 />
               </div>
             </div>
-            <h1 class="title_enjoy">Enjoy annual discounts now, pay monthly</h1>
+            <h1 class="title_enjoy title-${id}">${styleComfiModal(
+    styleModal,
+    activeStep
+  )}</h1>
             <p class="description">No interest. No fees.</p>
           </div>
         </div>
@@ -288,8 +312,10 @@ function ComfiBadges({
   plans = [3],
   url = "",
   onMonthChange,
+  styleModal = 1,
 }) {
   const comfiBadges = document.getElementById(id);
+  let activeStep = monthPrice(price, plans)?.[1];
   let step = monthPrice(price, plans)?.[1];
   let index = plans.indexOf(monthPrice(price, plans)?.[1]) + 1;
   let percentage = Math.round(100 / (plans.length + 1));
@@ -352,7 +378,18 @@ function ComfiBadges({
       </div>
         <div class="modal">
       <div class="card">
-        ${cardReturn(plans, percentage, step, index, price, url, id, true)}
+        ${cardReturn(
+          plans,
+          percentage,
+          step,
+          index,
+          price,
+          url,
+          id,
+          true,
+          styleModal,
+          activeStep
+        )}
       </div>
     </div>
       `;
@@ -366,6 +403,7 @@ function ComfiBadges({
   const closeModalBtn = document.querySelectorAll(".btn-close");
   const rowRows = document.querySelector(`.slider-${id}`);
   const rowTrack = document.querySelector(`.track-${id}`);
+  const rowTitle = document.querySelector(`.title-${id}`);
 
   wrapperWidget &&
     wrapperWidget.forEach((element, index) => {
@@ -383,6 +421,7 @@ function ComfiBadges({
         index = Number(e.target.dataset.id) + 1;
         step = Number(e.target.dataset.step);
 
+        activeStep = step;
         onMonthChange && onMonthChange(step);
 
         //# track
@@ -432,6 +471,9 @@ function ComfiBadges({
               curEl.setAttribute(attr.name, attr.value)
             );
         });
+
+        //# title
+        rowTitle.innerHTML = styleComfiModal(styleModal, activeStep);
       }
     });
   // });
@@ -563,21 +605,35 @@ function CustomHandler() {
   });
 }
 
-function CustomComfiBadges({
+function ComfiPopup({
   id = "",
   price = 100,
   plans = [3],
   url = "",
   onMonthChange,
+  style = 1,
+  styleModal = 1,
 }) {
   const comfiBadges = document.getElementById(id);
+  let activeStep = monthPrice(price, plans)?.[1];
   let step = monthPrice(price, plans)?.[1];
   let index = plans.indexOf(monthPrice(price, plans)?.[1]) + 1;
   let percentage = Math.round(100 / (plans.length + 1));
   if (comfiBadges) {
     comfiBadges.innerHTML = `
         <div class="card">
-          ${cardReturn(plans, percentage, step, index, price, url, id, false)}
+          ${cardReturn(
+            plans,
+            percentage,
+            step,
+            index,
+            price,
+            url,
+            id,
+            false,
+            styleModal,
+            activeStep
+          )}
         </div>
         `;
   }
@@ -588,6 +644,7 @@ function CustomComfiBadges({
   const closeModalBtn = document.querySelectorAll(".btn-close");
   const rowRows = document.querySelector(`.slider-${id}`);
   const rowTrack = document.querySelector(`.track-${id}`);
+  const rowTitle = document.querySelector(`.title-${id}`);
 
   rowRows &&
     // rowRows.forEach((element, idx) => {
@@ -598,6 +655,7 @@ function CustomComfiBadges({
 
         onMonthChange && onMonthChange(step);
 
+        activeStep = step;
         //# track
         const newTrack = Array.from(
           document
@@ -645,6 +703,9 @@ function CustomComfiBadges({
               curEl.setAttribute(attr.name, attr.value)
             );
         });
+
+        //# title
+        rowTitle.innerHTML = styleComfiModal(styleModal, activeStep);
       }
     });
   // });
@@ -743,4 +804,4 @@ function ComfiBanner({ id = "", style = 1, discount = 10 }) {
 
 window.ComfiBadges = ComfiBadges;
 window.ComfiBanner = ComfiBanner;
-window.CustomComfiBadges = CustomComfiBadges;
+window.ComfiPopup = ComfiPopup;

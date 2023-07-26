@@ -5,6 +5,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Comfi-script</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Work+Sans&display=swap"
+      rel="stylesheet"
+    />
     <link href="/css/fonts.css" rel="stylesheet" />
     <link href="/css/comfi-badges.css" rel="stylesheet" />
     <link href="/css/index.css" rel="stylesheet" />
@@ -59,17 +65,19 @@
         currency: "SAR",
         price: 10000,
         style: 4,
-        plans: [3, 4, 6, 9, 12],
+        plans: [12],
         url: "",
         customOpenModal: true,
+        styleModal: 1,
       });
 
-      window.CustomComfiBadges({
+      window.ComfiPopup({
         id: "custom",
         price: 10000,
-        plans: [3],
-        url: "https://comfi.app/",
+        plans: [6, 9, 12],
+        url: "",
         customOpenModal: true,
+        styleModal: 2,
       });
 
       // custom.innerHTML = customBadges;

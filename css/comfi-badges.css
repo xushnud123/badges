@@ -1,18 +1,12 @@
 @font-face {
   font-family: "Work Sans";
-  src: local("Work Sans"),
-    url("../fonts/WorkSans-Medium.woff2") format("opentype") tech(color-COLRv1),
-    url("../fonts/WorkSans-Medium.woff2") format("opentype"),
-    url("../fonts/WorkSans-Medium.woff2") format("woff");
+  src: local("Work Sans"), url("../fonts/WorkSans-Medium.woff2") format("woff2");
   font-display: block;
 }
 @font-face {
   font-family: "Neue Power Variable";
   src: local("Neue Power Variable"),
-    url("../fonts/NeuePowerTrial-Bold.ttf") format("opentype")
-      tech(color-COLRv1),
-    url("../fonts/NeuePowerTrial-Bold.ttf") format("opentype"),
-    url("../fonts/NeuePowerTrial-Bold.ttf") format("woff");
+    url("../fonts/NeuePowerTrial-Bold.woff2") format("woff2");
   font-display: block;
 }
 
