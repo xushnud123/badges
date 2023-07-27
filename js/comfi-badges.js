@@ -112,11 +112,12 @@ const track = (step, plans = [], index, percentage) => {
   }%" class="track"></div>`;
 };
 
-const planStates = (plans, price) => {
+const planStates = (plans, price, currency) => {
   if (plans.length === 1)
     return `<div class="left-widget-plans">
     <p class="left-widget-plans_p">pay in ${plans[0]}</p>
-    <h2 class="left-widget-plans_h2">$${priceCalculate(price, plans[0])}/mo</h2>
+    <h2 class="left-widget-plans_h2"> ${priceCalculate(price, plans[0])}/mo</h2>
+    <h3 class="left-widget-currency">${currency}</h3>
   </div>
   <img
       class="cards-img rocket"
@@ -141,6 +142,7 @@ const styleComfiModal = (style, activeStep) => {
 
 const cardReturn = (
   plans,
+  currency,
   percentage,
   step,
   index,
@@ -204,7 +206,7 @@ const cardReturn = (
       <div class="container-widget">
         <div class="row-widget">
           <div class="left-widget">
-            ${planStates(plans, price)}
+            ${planStates(plans, price, currency)}
           </div>
           <div class="right-widget">
             <div class="right-flex">
@@ -380,6 +382,7 @@ function ComfiBadges({
       <div class="card">
         ${cardReturn(
           plans,
+          currency,
           percentage,
           step,
           index,
@@ -607,6 +610,7 @@ function CustomHandler() {
 
 function ComfiPopup({
   id = "",
+  currency = "SAR",
   price = 100,
   plans = [3],
   url = "",
@@ -624,6 +628,7 @@ function ComfiPopup({
         <div class="card">
           ${cardReturn(
             plans,
+            currency,
             percentage,
             step,
             index,

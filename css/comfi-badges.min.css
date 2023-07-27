@@ -268,7 +268,7 @@ button {
   .left-widget
   .left-widget-plans
   .left-widget-plans_h2 {
-  margin-top: 5px;
+  margin-top: 4px;
   font-family: "Work Sans";
   font-style: normal;
   font-weight: 650;
@@ -277,6 +277,22 @@ button {
   font-feature-settings: "ss03" on, "ss04" on, "salt" on;
   color: #000;
   text-align: left;
+}
+.wrapper-widget
+  .container-widget
+  .row-widget
+  .left-widget
+  .left-widget-plans
+  .left-widget-currency {
+  color: #000;
+  text-align: start;
+  font-family: Work Sans;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  letter-spacing: 1.242px;
+  text-transform: uppercase;
 }
 .wrapper-widget .container-widget .row-widget .title_enjoy {
   margin-top: 8px;
