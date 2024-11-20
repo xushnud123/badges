@@ -151,5 +151,115 @@ function ComfiBanner({ id = "", style = 1, discount = 10 }) {
   }
 }
 
+function ComfiModal({ id = "" }) {
+  console.log(id);
+  const comfiModal = document.getElementById(id);
+  if (comfiModal) {
+    console.log(comfiModal);
+    comfiModal.insertAdjacentHTML(
+      "afterbegin",
+      `<div class="container">
+      <div class="banner-container">
+        <div class="banner">
+          <div class="banner-top">
+            <img src="/assets/comfi-logo-color.png" alt="comfi" class="logo" />
+            <div class="close-btn" id="comfi-modal-close">
+              <img src="/assets/Vector.png" alt="close icon" />
+            </div>
+          </div>
+          <div class="banner-body">
+            <h1 class="banner-body-h1">
+              Buy now, pay later – <span>for your business</span>
+            </h1>
+            <img src="/assets/Frame.png" alt="frame" class="body-frame" />
+          </div>
+          <div class="body-footer">
+            <div class="body-footer-body">
+              <div class="body-footer-glass"></div>
+              <img src="/assets/Layout.png" alt="layout" />
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="container-center">
+        <div class="section-two">
+          <h1>What is Comfi?</h1>
+          <p>
+            Comfi lets you get the products you need today and pay later – in
+            30, 45, or 60 days. It’s a simple, flexible payment solution that
+            gives you control over your cash flow without delaying important
+            purchases. No upfront payment, no hassle.
+          </p>
+        </div>
+        <div class="section-three">
+          <h1>What is Comfi?</h1>
+          <div class="section-three-container">
+            <div class="section-three-container-block">
+              <h2>Sign Up in Comfi</h2>
+              <p>Register an account with Comfi and submit:</p>
+              <div class="section-three-container-block-flex">
+                <div>Bank Statement</div>
+                <div>Bank details</div>
+                <div>Trade license number</div>
+              </div>
+            </div>
+            <div class="line"></div>
+            <div class="section-three-container-block">
+              <h2>Get approved</h2>
+              <p>You will receive a notification in 24h</p>
+            </div>
+            <div class="line"></div>
+            <div class="section-three-container-block">
+              <h2>Get your supplies</h2>
+              <p>Supplier delivers your goods</p>
+            </div>
+            <div class="line"></div>
+            <div class="section-three-container-block">
+              <h2>Pay in 30-60d</h2>
+              <p>You pay to Comfi in 30-60d</p>
+            </div>
+          </div>
+        </div>
+        <div class="benefits">
+          <h1>Benefits</h1>
+          <div class="benefits-container">
+            <div class="benefits-block">
+              <img src="./assets/Icon.png" alt="up" />
+              <h2>Leverage</h2>
+              <p>Up to 1,000,000 AED</p>
+            </div>
+            <div class="benefits-block">
+              <img src="./assets/Icon_2.png" alt="up" />
+              <h2>Ease</h2>
+              <p>Approval in 1 day</p>
+            </div>
+            <div class="benefits-block">
+              <img src="./assets/Icon_3.png" alt="up" />
+              <h2>Shariah Compliant</h2>
+              <p>Zero interest</p>
+            </div>
+            <div class="benefits-block">
+              <img src="./assets/Icon_4.png" alt="up" />
+              <h2>Flexibility</h2>
+              <p>Pay in 30-60 days</p>
+            </div>
+          </div>
+        </div>
+        <div class="footer">
+          <img src="./assets/Group 1000010935.png" alt="" />
+          <img src="./assets/image 221 (Traced).png" alt="" />
+          <img src="./assets/footer-img-3.png" alt="" />
+          <img
+            src="./assets/Al_Etihad_Credit_Bureau_Logo 1 (Traced).png"
+            alt=""
+          />
+        </div>
+      </div>
+    </div>`
+    );
+  }
+}
+
 window.ComfiBadges = ComfiBadges;
 window.ComfiBanner = ComfiBanner;
+window.ComfiModal = ComfiModal;
