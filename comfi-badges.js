@@ -158,7 +158,7 @@ function ComfiModal({ id = "" }) {
     console.log(comfiModal);
     comfiModal.insertAdjacentHTML(
       "afterbegin",
-      `<div class="container">
+      `<div class="container-modal">
       <div class="banner-container">
         <div class="banner">
           <div class="banner-top">

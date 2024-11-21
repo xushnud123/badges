@@ -1,5 +1,3 @@
 # badges
 
-comfi uchun
-
-comfi modal id=comfi-modal-close
+comfi modal close button id=comfi-modal-close
