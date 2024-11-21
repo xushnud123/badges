@@ -243,6 +243,11 @@ function ComfiModal({ id = "" }) {
               <h2>Flexibility</h2>
               <p>Pay in 30-60 days</p>
             </div>
+              <img
+              src="./assets/Group 1000011013.png"
+              alt="img"
+              class="bg-rectangle"
+            />
           </div>
         </div>
         <div class="footer">
