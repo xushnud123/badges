@@ -151,7 +151,7 @@ function ComfiBanner({ id = "", style = 1, discount = 10 }) {
   }
 }
 
-function ComfiModal({ id = "" }) {
+function ComfiModal({ id = "", url = "" }) {
   console.log(id);
   const comfiModal = document.getElementById(id);
   if (comfiModal) {
@@ -250,6 +250,45 @@ function ComfiModal({ id = "" }) {
             </div>
 
           </div>
+        </div>
+ <div style="display: flex; justify-content: center">
+          <a
+            href="${url}"
+            target="_blank"
+            style="
+              width: 100%;
+              height: 100%;
+              padding-left: 32px;
+              padding-right: 32px;
+              padding-top: 8px;
+              padding-bottom: 8px;
+              background: #318170;
+              border-radius: 12px;
+              justify-content: center;
+              align-items: center;
+              gap: 8px;
+              display: inline-flex;
+              margin: 28px auto;
+              max-width: 334px;
+              text-decoration: none;
+            "
+          >
+            <div
+              class="Lable"
+              style="
+                text-align: center;
+                color: white;
+                font-size: 18px;
+                font-family: Aeonik;
+                font-weight: 500;
+                line-height: 26px;
+                letter-spacing: 0.18px;
+                word-wrap: break-word;
+              "
+            >
+              Start now
+            </div>
+          </a>
         </div>
         <div class="footer">
           <img src="./assets/Group 1000010935.png" alt="" />
