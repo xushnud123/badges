@@ -318,6 +318,12 @@
 .section-three-container-block {
   height: 140px;
 }
+.section-three-container-block:nth-child(1) h2 {
+  padding-right: 40px;
+}
+.section-three-container-block:nth-child(7) h2 {
+  padding-right: 25px;
+}
 
 .section-three-container-block:not(:first-child) {
   padding-left: 14px;
@@ -404,6 +410,12 @@
   }
   .section-three-container .bg-rectangle {
     display: block;
+  }
+  .section-three-container-block:nth-child(1) h2 {
+    padding-right: 0;
+  }
+  .section-three-container-block:nth-child(7) h2 {
+    padding-right: 0;
   }
 }
 

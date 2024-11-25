@@ -185,10 +185,7 @@ function ComfiModal({ id = "", url = "" }) {
         <div class="section-two">
           <h1>What is Comfi?</h1>
           <p>
-            Comfi lets you get the products you need today and pay later – in
-            30, 45, or 60 days. It’s a simple, flexible payment solution that
-            gives you control over your cash flow without delaying important
-            purchases. No upfront payment, no hassle.
+           Comfi lets you get the products you need today and pay later – in 30, 45, or 60 days. It’s a simple, flexible payment solution that gives you control over your cash flow without delaying important purchases. No upfront payment, no hassle.
           </p>
         </div>
         <div class="section-three">
