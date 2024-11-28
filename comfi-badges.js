@@ -154,7 +154,7 @@ function ComfiBanner({ id = "", style = 1, discount = 10 }) {
 function ComfiModal({ id = "", url = "" }) {
   const comfiModal = document.getElementById(id);
   const body = document.body;
-  const modalContent = `<div class="container-modal-wrapper"><div class="container-modal-wrapper-container">
+  const modalContent = `<div  id="container-modal-wrapper" class="container-modal-wrapper"><div class="container-modal-wrapper-container">
       <div class="container-modal">
       <div class="close-btn-wrap">
       <div class="close-btn" id="comfi-modal-close">
@@ -349,22 +349,24 @@ function ComfiModal({ id = "", url = "" }) {
     </div>`;
   if (comfiModal) {
     const modalBannerUniq = document.getElementById("modal-banner-uniq");
-    body.insertAdjacentHTML("afterbegin", modalContent);
-    if (!modalBannerUniq) {
-      comfiModal.insertAdjacentHTML("afterbegin", modalBanner);
-    }
-
-    const closeBtn = document.getElementById("comfi-modal-close");
-    const comfiBannerModalBtn = document.getElementById(
-      "comfi-banner-modal-btn"
+    const containerModalContent = document.getElementById(
+      "container-modal-wrapper"
     );
-    const close = () => {
-      body.classList.toggle("comfi-modal-open");
-    };
+    if (!containerModalContent && !modalBannerUniq) {
+      body.insertAdjacentHTML("afterbegin", modalContent);
+      comfiModal.insertAdjacentHTML("afterbegin", modalBanner);
+      const closeBtn = document.getElementById("comfi-modal-close");
+      const comfiBannerModalBtn = document.getElementById(
+        "comfi-banner-modal-btn"
+      );
+      const close = () => {
+        body.classList.toggle("comfi-modal-open");
+      };
 
-    console.log(closeBtn);
-    comfiBannerModalBtn.addEventListener("click", close);
-    closeBtn.addEventListener("click", close);
+      console.log(closeBtn, comfiBannerModalBtn);
+      comfiBannerModalBtn.addEventListener("click", close);
+      closeBtn.addEventListener("click", close);
+    }
   }
 }
 
