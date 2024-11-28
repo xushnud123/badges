@@ -626,6 +626,7 @@
   height: max-content;
   transition: all linear 0.3s;
   min-width: max-content;
+  cursor: pointer;
 }
 .comfi-modal-banner-btn:hover {
   background-color: rgba(255, 255, 255, 0.8);

@@ -1,6 +1,6 @@
 {
   "name": "comfi-badges",
-  "version": "1.2.3",
+  "version": "1.2.4",
   "description": "Marketing banners for comfi",
   "main": "comfi-badges.js",
   "unpkg": {
