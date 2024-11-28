@@ -152,20 +152,19 @@ function ComfiBanner({ id = "", style = 1, discount = 10 }) {
 }
 
 function ComfiModal({ id = "", url = "" }) {
-  console.log(id);
   const comfiModal = document.getElementById(id);
-  if (comfiModal) {
-    console.log(comfiModal);
-    comfiModal.insertAdjacentHTML(
-      "afterbegin",
-      `<div class="container-modal">
+  const body = document.body;
+  const modalContent = `<div class="container-modal-wrapper"><div class="container-modal-wrapper-container">
+      <div class="container-modal">
+      <div class="close-btn-wrap">
+      <div class="close-btn" id="comfi-modal-close">
+             <img src="/assets/Vector.png" alt="close icon" />
+           </div>
+      </div>
       <div class="banner-container">
         <div class="banner">
           <div class="banner-top">
             <img src="/assets/comfi-logo-color.png" alt="comfi" class="logo" />
-            <div class="close-btn" id="comfi-modal-close">
-              <img src="/assets/Vector.png" alt="close icon" />
-            </div>
           </div>
           <div class="banner-body">
             <h1 class="banner-body-h1">
@@ -248,7 +247,7 @@ function ComfiModal({ id = "", url = "" }) {
 
           </div>
         </div>
- <div style="display: flex; justify-content: center">
+ <div  class="comfi-modal-start-btn">
           <a
             href="${url}"
             target="_blank"
@@ -297,8 +296,72 @@ function ComfiModal({ id = "", url = "" }) {
           />
         </div>
       </div>
-    </div>`
+    </div><div  class="comfi-modal-start-btn-mobile">
+          <a
+            href="${url}"
+            target="_blank"
+            style="
+              width: 100%;
+              height: 100%;
+              padding-left: 32px;
+              padding-right: 32px;
+              padding-top: 8px;
+              padding-bottom: 8px;
+              background: #318170;
+              border-radius: 12px;
+              justify-content: center;
+              align-items: center;
+              gap: 8px;
+              display: inline-flex;
+              margin: 28px auto;
+              max-width: 334px;
+              text-decoration: none;
+            "
+          >
+            <div
+              class="Lable"
+              style="
+                text-align: center;
+                color: white;
+                font-size: 18px;
+                font-family: Aeonik;
+                font-weight: 500;
+                line-height: 26px;
+                letter-spacing: 0.18px;
+                word-wrap: break-word;
+              "
+            >
+              Start now
+            </div>
+          </a>
+        </div></div></div>`;
+  const modalBanner = ` <div class="comfi-modal-banner">
+      <div class="comfi-modal-banner-container">
+        <div class="comfi-modal-banner-text">
+          <span>
+            Buy now pay later with
+            <img src="./assets/comfi-logo-color-green.png" alt="" />.</span
+          >
+          <span> Up to AED 1,000.000</span>
+        </div>
+        <div id="comfi-banner-modal-btn" class="comfi-modal-banner-btn">Apply now</div>
+      </div>
+    </div>`;
+  if (comfiModal) {
+    body.insertAdjacentHTML("afterbegin", modalContent);
+    comfiModal.insertAdjacentHTML("afterbegin", modalBanner);
+
+    const closeBtn = document.getElementById("comfi-modal-close");
+    const comfiBannerModalBtn = document.getElementById(
+      "comfi-banner-modal-btn"
     );
+    const close = () => {
+      body.classList.toggle("comfi-modal-open");
+    };
+
+    console.log(closeBtn);
+    comfiBannerModalBtn.addEventListener("click", close);
+    closeBtn.addEventListener("click", close);
   }
 }
 

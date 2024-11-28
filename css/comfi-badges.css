@@ -107,14 +107,46 @@
   padding: 0;
 }
 
-.container-modal {
-  max-width: 700px;
-  margin: 0 auto;
+.comfi-modal-open .container-modal-wrapper {
+  display: block;
+}
+
+.container-modal-wrapper {
+  display: none;
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  z-index: 99999;
+  top: 0;
+  left: 0;
+  background: rgba(16, 40, 35, 0.6);
+}
+
+.container-modal-wrapper-container {
+  position: relative;
   background: #fff;
   border-radius: 28px;
+  height: max-content;
+  overflow: hidden;
+  margin: 10vh auto 0 auto;
+  max-width: 704px;
+  width: 100%;
+}
+
+.container-modal {
+  margin: 0 auto 0 auto;
+  overflow: hidden;
+  padding: 2px;
+  max-height: calc(80vh - 68px);
+  overflow-y: scroll;
+  padding-bottom: 20px;
+}
+.container-modal::-webkit-scrollbar {
+  display: none;
 }
 .container-center {
   padding: 0 16px;
+  transform: translateY(-26px);
 }
 
 .banner-container {
@@ -122,6 +154,7 @@
   border-radius: 28px;
   width: 100%;
   height: max-content;
+  transform: translateY(-26px);
 }
 
 .banner {
@@ -145,7 +178,20 @@
   object-fit: contain;
 }
 
+.close-btn-wrap {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  position: sticky;
+  top: 16px;
+  z-index: 1;
+  padding-right: 16px;
+}
 .close-btn {
+  transform: translateX(-16px);
+  z-index: 1;
+  top: 15px;
+  right: 16px;
   display: flex;
   width: 26px;
   height: 26px;
@@ -154,7 +200,7 @@
   align-items: center;
   flex-shrink: 0;
   border-radius: 8px;
-  background: rgba(255, 255, 255, 0.12);
+  background: rgba(0, 0, 0, 0.2);
   cursor: pointer;
 }
 
@@ -162,6 +208,40 @@
   width: 12px;
   height: 12px;
   flex-shrink: 0;
+}
+
+.comfi-modal-start-btn {
+  display: flex;
+  justify-content: center;
+}
+.comfi-modal-start-btn-mobile {
+  display: none;
+}
+
+@media screen and (max-width: 560px) {
+  .comfi-modal-start-btn {
+    display: none;
+  }
+  .comfi-modal-start-btn-mobile {
+    background: var(--color-content-background-bg-primary);
+    box-shadow: var(--box-shadow-box-shadow-50-x, 0px) -8px var(
+        --box-shadow-box-shadow-50-blur,
+        20px
+      ) var(--box-shadow-box-shadow-50-spread, 0px) rgba(0, 0, 0, 0.12);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 68px;
+  }
+  .comfi-modal-start-btn-mobile a {
+    margin: 0 auto !important;
+    height: 44px !important;
+    padding: 0 !important;
+    display: flex;
+    align-items: center;
+    width: 100% !important;
+    max-width: calc(100% - 32px) !important;
+  }
 }
 
 .banner-body {
@@ -491,4 +571,86 @@
   width: auto;
   height: auto;
   object-fit: contain;
+}
+
+/* * comfi-modal banner */
+
+.comfi-modal-banner {
+  width: 100%;
+  background: #183e36;
+}
+.comfi-modal-banner-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 19px 10px;
+  background-image: url("/assets/Background.png");
+  background-size: cover;
+  gap: 16px;
+}
+
+.comfi-modal-banner .comfi-modal-banner-text {
+  color: white;
+  text-align: center;
+  font-family: "Aeonik";
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 21.62px; /* 135.123% */
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.comfi-modal-banner .comfi-modal-banner-text span {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.comfi-modal-banner .comfi-modal-banner-text img {
+  width: 72px;
+  height: 21px;
+  object-fit: contain;
+}
+.comfi-modal-banner-btn {
+  background: white;
+  border-radius: 6px;
+  padding: 8px 20px;
+  color: #151515;
+  text-align: center;
+  font-family: "Aeonik";
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 21.62px; /* 154.427% */
+  text-decoration: none;
+  height: max-content;
+  transition: all linear 0.3s;
+  min-width: max-content;
+}
+.comfi-modal-banner-btn:hover {
+  background-color: rgba(255, 255, 255, 0.8);
+}
+
+@media screen and (max-width: 576px) {
+  .comfi-modal-banner-container {
+    padding: 9px 8px;
+    gap: 8px;
+  }
+  .comfi-modal-banner .comfi-modal-banner-text {
+    flex-direction: column;
+    justify-content: flex-start;
+    font-size: 14px;
+  }
+  .comfi-modal-banner .comfi-modal-banner-text span {
+    justify-content: flex-start;
+    text-align: left;
+    width: 100%;
+    gap: 4px;
+  }
+}
+
+@media screen and (max-width: 450px) {
+  .comfi-modal-banner .comfi-modal-banner-text {
+    width: 100%;
+  }
 }
