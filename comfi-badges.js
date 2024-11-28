@@ -158,24 +158,24 @@ function ComfiModal({ id = "", url = "" }) {
       <div class="container-modal">
       <div class="close-btn-wrap">
       <div class="close-btn" id="comfi-modal-close">
-             <img src="/assets/Vector.png" alt="close icon" />
+             <img src="https://unpkg.com/comfi-badges@latest/assets/Vector.png" alt="close icon" />
            </div>
       </div>
       <div class="banner-container">
         <div class="banner">
           <div class="banner-top">
-            <img src="/assets/comfi-logo-color.png" alt="comfi" class="logo" />
+            <img src="https://unpkg.com/comfi-badges@latest/assets/comfi-logo-color.png" alt="comfi" class="logo" />
           </div>
           <div class="banner-body">
             <h1 class="banner-body-h1">
               Buy now, pay later – <span>for your business</span>
             </h1>
-            <img src="/assets/Frame.png" alt="frame" class="body-frame" />
+            <img src="https://unpkg.com/comfi-badges@latest/assets/Frame.png" alt="frame" class="body-frame" />
           </div>
           <div class="body-footer">
             <div class="body-footer-body">
               <div class="body-footer-glass"></div>
-              <img src="/assets/Layout.png" alt="layout" />
+              <img src="https://unpkg.com/comfi-badges@latest/assets/Layout.png" alt="layout" />
             </div>
           </div>
         </div>
@@ -215,7 +215,7 @@ function ComfiModal({ id = "", url = "" }) {
               <p>You pay to Comfi in 30-60d</p>
             </div>
               <img
-              src="./assets/Group 1000011013.png"
+              src="https://unpkg.com/comfi-badges@latest/assets/Group 1000011013.png"
               alt="img"
               class="bg-rectangle"
             />
@@ -225,22 +225,22 @@ function ComfiModal({ id = "", url = "" }) {
           <h1>Benefits</h1>
           <div class="benefits-container">
             <div class="benefits-block">
-              <img src="./assets/Icon.png" alt="up" />
+              <img src="https://unpkg.com/comfi-badges@latest/assets/Icon.png" alt="up" />
               <h2>Leverage</h2>
               <p>Up to 1,000,000 AED</p>
             </div>
             <div class="benefits-block">
-              <img src="./assets/Icon_2.png" alt="up" />
+              <img src="https://unpkg.com/comfi-badges@latest/assets/Icon_2.png" alt="up" />
               <h2>Ease</h2>
               <p>Approval in 1 day</p>
             </div>
             <div class="benefits-block">
-              <img src="./assets/Icon_3.png" alt="up" />
+              <img src="https://unpkg.com/comfi-badges@latest/assets/Icon_3.png" alt="up" />
               <h2>Shariah Compliant</h2>
               <p>Zero interest</p>
             </div>
             <div class="benefits-block">
-              <img src="./assets/Icon_4.png" alt="up" />
+              <img src="https://unpkg.com/comfi-badges@latest/assets/Icon_4.png" alt="up" />
               <h2>Flexibility</h2>
               <p>Pay in 30-60 days</p>
             </div>
@@ -287,11 +287,11 @@ function ComfiModal({ id = "", url = "" }) {
           </a>
         </div>
         <div class="footer">
-          <img src="./assets/Group 1000010935.png" alt="" />
-          <img src="./assets/image 221 (Traced).png" alt="" />
-          <img src="./assets/footer-img-3.png" alt="" />
+          <img src="https://unpkg.com/comfi-badges@latest/assets/Group 1000010935.png" alt="" />
+          <img src="https://unpkg.com/comfi-badges@latest/assets/image 221 (Traced).png" alt="" />
+          <img src="https://unpkg.com/comfi-badges@latest/assets/footer-img-3.png" alt="" />
           <img
-            src="./assets/Al_Etihad_Credit_Bureau_Logo 1 (Traced).png"
+            src="https://unpkg.com/comfi-badges@latest/assets/Al_Etihad_Credit_Bureau_Logo 1 (Traced).png"
             alt=""
           />
         </div>
@@ -335,12 +335,12 @@ function ComfiModal({ id = "", url = "" }) {
             </div>
           </a>
         </div></div></div>`;
-  const modalBanner = ` <div class="comfi-modal-banner">
+  const modalBanner = ` <div id="modal-banner-uniq" class="comfi-modal-banner">
       <div class="comfi-modal-banner-container">
         <div class="comfi-modal-banner-text">
           <span>
             Buy now pay later with
-            <img src="./assets/comfi-logo-color-green.png" alt="" />.</span
+            <img src="https://unpkg.com/comfi-badges@latest/assets/comfi-logo-color-green.png" alt="" />.</span
           >
           <span> Up to AED 1,000.000</span>
         </div>
@@ -348,8 +348,11 @@ function ComfiModal({ id = "", url = "" }) {
       </div>
     </div>`;
   if (comfiModal) {
+    const modalBannerUniq = document.getElementById("modal-banner-uniq");
     body.insertAdjacentHTML("afterbegin", modalContent);
-    comfiModal.insertAdjacentHTML("afterbegin", modalBanner);
+    if (!modalBannerUniq) {
+      comfiModal.insertAdjacentHTML("afterbegin", modalBanner);
+    }
 
     const closeBtn = document.getElementById("comfi-modal-close");
     const comfiBannerModalBtn = document.getElementById(

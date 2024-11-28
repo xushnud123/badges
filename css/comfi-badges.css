@@ -86,19 +86,22 @@
 
 @font-face {
   font-family: "Aeonik";
-  src: url("/assets/AeonikTRIAL-Regular.woff2") format("woff2");
+  src: url("https://unpkg.com/comfi-badges@latest/assets/AeonikTRIAL-Regular.woff2")
+    format("woff2");
   font-weight: 400;
   font-style: normal;
 }
 @font-face {
   font-family: "Aeonik";
-  src: url("/assets/Aeonik\ Medium.woff2") format("woff2");
+  src: url("https://unpkg.com/comfi-badges@latest/assets/Aeonik\ Medium.woff2")
+    format("woff2");
   font-weight: 500;
   font-style: normal;
 }
 @font-face {
   font-family: "Aeonik";
-  src: url("/assets/AeonikTRIAL-Bold.woff2") format("woff2");
+  src: url("https://unpkg.com/comfi-badges@latest/assets/AeonikTRIAL-Bold.woff2")
+    format("woff2");
   font-weight: 700;
   font-style: normal;
 }
@@ -159,7 +162,7 @@
 
 .banner {
   padding: 16px;
-  background-image: url("/assets/Background.png");
+  background-image: url("https://unpkg.com/comfi-badges@latest/assets/Background.png");
   height: 325px;
   border-radius: 28px;
   position: relative;
@@ -462,7 +465,7 @@
 .section-three-container .line {
   width: 26px;
   height: 140px;
-  background-image: url("/assets/Line.png");
+  background-image: url("https://unpkg.com/comfi-badges@latest/assets/Line.png");
   min-width: 26px;
   background-size: 100% 100%;
 }
@@ -592,7 +595,7 @@
   justify-content: center;
   align-items: center;
   padding: 19px 10px;
-  background-image: url("/assets/Background.png");
+  background-image: url("https://unpkg.com/comfi-badges@latest/assets/Background.png");
   background-size: cover;
   gap: 16px;
 }
