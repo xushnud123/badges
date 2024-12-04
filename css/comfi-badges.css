@@ -590,17 +590,39 @@
   .benefits-container {
     grid-template-columns: repeat(2, 1fr);
   }
+  .footer {
+    margin-top: 20px;
+  }
 }
 
 .footer {
-  margin-top: 20px;
   display: flex;
   justify-content: center;
   gap: 12px;
-  opacity: 0.8;
+  opacity: 0.6;
 }
 .footer img {
   width: auto;
+  height: auto;
+  object-fit: contain;
+}
+.footer img:nth-child(1) {
+  width: 110px;
+  height: auto;
+  object-fit: contain;
+}
+.footer img:nth-child(2) {
+  width: 70px;
+  height: auto;
+  object-fit: contain;
+}
+.footer img:nth-child(3) {
+  width: 90px;
+  height: auto;
+  object-fit: contain;
+}
+.footer img:nth-child(4) {
+  width: 90px;
   height: auto;
   object-fit: contain;
 }
