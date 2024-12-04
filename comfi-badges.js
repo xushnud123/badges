@@ -188,7 +188,7 @@ function ComfiModal({ id = "", url = "" }) {
           </p>
         </div>
         <div class="section-three">
-          <h1>What is Comfi?</h1>
+          <h1>How it works</h1>
           <div class="section-three-container">
             <div class="section-three-container-block">
               <h2>Sign Up in Comfi</h2>
@@ -251,23 +251,7 @@ function ComfiModal({ id = "", url = "" }) {
           <a
             href="${url}"
             target="_blank"
-            style="
-              width: 100%;
-              height: 100%;
-              padding-left: 32px;
-              padding-right: 32px;
-              padding-top: 8px;
-              padding-bottom: 8px;
-              background: #318170;
-              border-radius: 12px;
-              justify-content: center;
-              align-items: center;
-              gap: 8px;
-              display: inline-flex;
-              margin: 28px auto;
-              max-width: 334px;
-              text-decoration: none;
-            "
+
           >
             <div
               class="Lable"

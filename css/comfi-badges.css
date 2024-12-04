@@ -217,6 +217,27 @@
   display: flex;
   justify-content: center;
 }
+.comfi-modal-start-btn a {
+  transition: all linear 0.3s;
+  width: 100%;
+  height: 100%;
+  padding-left: 32px;
+  padding-right: 32px;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  background: #318170;
+  border-radius: 12px;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  display: inline-flex;
+  margin: 28px auto;
+  max-width: 334px;
+  text-decoration: none;
+}
+.comfi-modal-start-btn a:hover {
+  background: #27675a;
+}
 .comfi-modal-start-btn-mobile {
   display: none;
 }
@@ -576,7 +597,7 @@
   display: flex;
   justify-content: center;
   gap: 12px;
-  opacity: 0.6;
+  opacity: 0.8;
 }
 .footer img {
   width: auto;
