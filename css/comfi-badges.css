@@ -256,7 +256,7 @@
 
 .banner-body-h1 {
   color: #ffffff;
-  font-family: "Aeonik";
+  font-family: "Aeonik", sans-serif;
   font-size: 36px;
   font-style: normal;
   font-weight: 500;
@@ -359,7 +359,7 @@
 }
 
 .section-two h1 {
-  font-family: "Aeonik";
+  font-family: "Aeonik", sans-serif;
   color: black;
   font-size: 24px;
   font-style: normal;
@@ -371,7 +371,7 @@
 
 .section-two p {
   color: #000000;
-  font-family: "Aeonik";
+  font-family: "Aeonik", sans-serif;
   font-size: 16px;
   font-style: normal;
   font-weight: 400;
@@ -386,7 +386,7 @@
 }
 
 .section-three h1 {
-  font-family: "Aeonik";
+  font-family: "Aeonik", sans-serif;
   color: black;
   font-size: 24px;
   font-style: normal;
@@ -422,7 +422,7 @@
 .section-three-container-block h2 {
   color: #318170;
   font-size: 20px;
-  font-family: "Aeonik";
+  font-family: "Aeonik", sans-serif;
   font-weight: 500;
   line-height: 26px;
   letter-spacing: 0.2px;
@@ -432,7 +432,7 @@
 .section-three-container-block p {
   color: #5f5f5f;
   font-size: 14px;
-  font-family: "Aeonik";
+  font-family: "Aeonik", sans-serif;
   font-weight: 400;
   line-height: 20px;
   letter-spacing: 0.14px;
@@ -449,7 +449,7 @@
 .section-three-container-block-flex div {
   color: black;
   font-size: 10px;
-  font-family: "Aeonik";
+  font-family: "Aeonik", sans-serif;
   font-weight: 400;
   line-height: 12px;
   letter-spacing: 0.1px;
@@ -514,7 +514,7 @@
   margin-top: 28px;
   color: black;
   font-size: 24px;
-  font-family: "Aeonik";
+  font-family: "Aeonik", sans-serif;
   font-weight: 700;
   line-height: 32px;
   letter-spacing: 0.24px;
@@ -548,7 +548,7 @@
 .benefits .benefits-block h2 {
   color: black;
   font-size: 18px;
-  font-family: "Aeonik";
+  font-family: "Aeonik", sans-serif;
   font-weight: 500;
   line-height: 26px;
   letter-spacing: 0.18px;
@@ -558,7 +558,7 @@
 .benefits .benefits-block p {
   color: #5f5f5f;
   font-size: 14px;
-  font-family: "Aeonik";
+  font-family: "Aeonik", sans-serif;
   font-weight: 400;
   line-height: 20px;
   letter-spacing: 0.14px;
@@ -603,7 +603,7 @@
 .comfi-modal-banner .comfi-modal-banner-text {
   color: white;
   text-align: center;
-  font-family: "Aeonik";
+  font-family: "Aeonik", sans-serif;
   font-size: 16px;
   font-style: normal;
   font-weight: 700;
@@ -628,7 +628,7 @@
   padding: 8px 20px;
   color: #151515;
   text-align: center;
-  font-family: "Aeonik";
+  font-family: "Aeonik", sans-serif;
   font-size: 14px;
   font-style: normal;
   font-weight: 500;
