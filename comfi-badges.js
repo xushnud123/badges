@@ -158,7 +158,7 @@ function ComfiModal({ id = "", url = "" }) {
       <div class="container-modal">
       <div class="close-btn-wrap">
       <div class="close-btn" id="comfi-modal-close">
-             <img src="https://unpkg.com/comfi-badges@latest/assets/Vector.png" alt="close icon" />
+             <img src="https://unpkg.com/comfi-badges@latest/assets/close-icon.png" alt="close icon" />
            </div>
       </div>
       <div class="banner-container">
