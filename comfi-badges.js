@@ -271,11 +271,11 @@ function ComfiModal({ id = "", url = "" }) {
           </a>
         </div>
         <div class="footer">
-          <img src="https://unpkg.com/comfi-badges@latest/assets/Group 1000010935.svg" alt="" />
-          <img src="https://unpkg.com/comfi-badges@latest/assets/image 221 (Traced).svg" alt="" />
-          <img src="https://unpkg.com/comfi-badges@latest/assets/Vector.svg" alt="" />
+          <img src="./assets/Group 1000010935.svg" alt="" />
+          <img src="./assets/image 221 (Traced).svg" alt="" />
+          <img src="./assets/Vector.svg" alt="" />
           <img
-            src="https://unpkg.com/comfi-badges@latest/assets/Al_Etihad_Credit_Bureau_Logo 1 (Traced).svg"
+            src="./assets/Al_Etihad_Credit_Bureau_Logo 1 (Traced).svg"
             alt=""
           />
         </div>

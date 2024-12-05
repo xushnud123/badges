@@ -599,7 +599,7 @@
   display: flex;
   justify-content: center;
   gap: 12px;
-  opacity: 0.6;
+  opacity: 1;
 }
 .footer img {
   width: auto;
