@@ -658,12 +658,14 @@
 .comfi-modal-banner .comfi-modal-banner-text span {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 0px;
 }
 .comfi-modal-banner .comfi-modal-banner-text img {
   width: 72px;
   height: 21px;
   object-fit: contain;
+  margin-left: 8px;
+  margin-right: 3px;
 }
 .comfi-modal-banner-btn {
   background: white;
