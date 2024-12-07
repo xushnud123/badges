@@ -184,7 +184,7 @@ function ComfiModal({ id = "", url = "" }) {
         <div class="section-two">
           <h1>What is Comfi?</h1>
           <p>
-           Comfi lets you get the products you need today and pay later – in 30, 45, or 60 days. It’s a simple, flexible payment solution that gives you control over your cash flow without delaying important purchases. No upfront payment, no hassle.
+           Comfi lets you get the products you need today and pay later – in 30, 60, or 90 days. It’s a simple, flexible payment solution that gives you control over your cash flow without delaying important purchases. No upfront payment, no hassle.
           </p>
         </div>
         <div class="section-three">
@@ -211,8 +211,8 @@ function ComfiModal({ id = "", url = "" }) {
             </div>
             <div class="line"></div>
             <div class="section-three-container-block">
-              <h2>Pay in 30-60d</h2>
-              <p>You pay to Comfi in 30-60d</p>
+              <h2>Pay in 30-90d</h2>
+              <p>You pay to Comfi in 30-90d</p>
             </div>
               <img
               src="https://unpkg.com/comfi-badges@latest/assets/Group 1000011013.png"
@@ -326,7 +326,7 @@ function ComfiModal({ id = "", url = "" }) {
             Buy now pay later with
             <img src="https://unpkg.com/comfi-badges@latest/assets/comfi-logo-color-green.png" alt="" />.</span
           >
-          <span> Up to AED 1,000.000</span>
+          <span> Up to AED 1,000,000</span>
         </div>
         <div id="comfi-banner-modal-btn" class="comfi-modal-banner-btn">Apply now</div>
       </div>
